@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import logo from '../assets/logo.png';
 
-function Navbar({ onAuthClick, onNavigate }) {
+function Navbar({ onAuthClick, onNavigate, currentPage }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, logout, isAuthenticated } = useAuth();
@@ -24,46 +25,130 @@ function Navbar({ onAuthClick, onNavigate }) {
     document.body.classList.remove('no-scroll');
   };
 
-  const scrollToSection = (e, sectionId) => {
-    e.preventDefault();
+  const navigateTo = (page) => {
     closeMenu();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (onNavigate) {
+      onNavigate(page);
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
-          <a href="#home" className="nav-logo" onClick={(e) => scrollToSection(e, 'home')}>
-            <span className="logo-icon">🌿</span>
+          <a 
+            href="#home" 
+            className="nav-logo" 
+            onClick={(e) => { e.preventDefault(); navigateTo('home'); }}
+          >
+            <img 
+              src={logo}
+              alt="HalamangGaling PH Logo" 
+              className="logo-image"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'inline-block';
+              }}
+            />
+            <span className="logo-icon" style={{display: 'none'}}>🌿</span>
             <span className="logo-text">HalamangGaling<span className="logo-accent">PH</span></span>
           </a>
           
           <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-            <li><a href="#home" className="nav-link" onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('home'); scrollToSection(e, 'home'); }}>Home</a></li>
-            <li><a href="#about" className="nav-link" onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('home'); scrollToSection(e, 'about'); }}>About</a></li>
-            <li><a href="#library" className="nav-link" onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('home'); scrollToSection(e, 'library'); }}>Library</a></li>
-            <li><a href="#articles" className="nav-link" onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('home'); scrollToSection(e, 'articles'); }}>Articles</a></li>
-            <li><a href="#contact" className="nav-link" onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('home'); scrollToSection(e, 'contact'); }}>Contact</a></li>
+            <li>
+              <a 
+                href="#home" 
+                className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
+                onClick={(e) => { e.preventDefault(); navigateTo('home'); }}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#about" 
+                className={`nav-link ${currentPage === 'about' ? 'active' : ''}`}
+                onClick={(e) => { e.preventDefault(); navigateTo('about'); }}
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#library" 
+                className={`nav-link ${currentPage === 'library' ? 'active' : ''}`}
+                onClick={(e) => { e.preventDefault(); navigateTo('library'); }}
+              >
+                Library
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#articles" 
+                className={`nav-link ${currentPage === 'articles' ? 'active' : ''}`}
+                onClick={(e) => { e.preventDefault(); navigateTo('articles'); }}
+              >
+                Articles
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#contact" 
+                className={`nav-link ${currentPage === 'contact' ? 'active' : ''}`}
+                onClick={(e) => { e.preventDefault(); navigateTo('contact'); }}
+              >
+                Contact
+              </a>
+            </li>
             {isAuthenticated() && (user?.role === 'professional' || user?.role === 'admin') && (
-              <li><a href="#professional" className="nav-link" onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('professional'); }}>Professional</a></li>
+              <li>
+                <a 
+                  href="#professional" 
+                  className={`nav-link nav-link-special ${currentPage === 'professional' ? 'active' : ''}`}
+                  onClick={(e) => { e.preventDefault(); navigateTo('professional'); }}
+                >
+                  Professional
+                </a>
+              </li>
             )}
             {isAuthenticated() && user?.role === 'admin' && (
-              <li><a href="#admin" className="nav-link" onClick={(e) => { e.preventDefault(); onNavigate && onNavigate('admin'); }}>Admin</a></li>
+              <li>
+                <a 
+                  href="#admin" 
+                  className={`nav-link nav-link-admin ${currentPage === 'admin' ? 'active' : ''}`}
+                  onClick={(e) => { e.preventDefault(); navigateTo('admin'); }}
+                >
+                  Admin
+                </a>
+              </li>
             )}
           </ul>
 
           <div className="nav-actions">
             {isAuthenticated() ? (
               <div className="user-menu">
-                <span className="user-greeting">Hello, {user.username}!</span>
+                <span className="user-greeting">
+                  <span className="user-role-badge">{user.role}</span>
+                  {user.username}
+                </span>
                 <button className="btn btn-outline" onClick={logout}>Logout</button>
               </div>
             ) : (
-              <button className="btn btn-outline" onClick={() => onAuthClick && onAuthClick('login')}>Login</button>
+              <>
+                <button 
+                  className="btn btn-outline" 
+                  onClick={() => onAuthClick && onAuthClick('login')}
+                >
+                  Login
+                </button>
+                <button 
+                  className="btn btn-primary btn-signup" 
+                  onClick={() => onAuthClick && onAuthClick('register')}
+                >
+                  Sign Up
+                </button>
+              </>
             )}
             <button 
               className={`hamburger ${menuOpen ? 'active' : ''}`} 

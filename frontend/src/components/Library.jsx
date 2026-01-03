@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import libraryData from '../data/libraryData';
+import { libraryAPI } from '../services/api';
 
 const categoryLabels = {
   plants: 'Medicinal Plant',
@@ -23,29 +23,30 @@ function Library({ onItemClick }) {
     return () => clearTimeout(timer);
   }, [search]);
 
-  // Load items from local data
+  // Load items from API
   useEffect(() => {
-    const loadItems = () => {
+    const loadItems = async () => {
       setLoading(true);
-      
-      // Filter items based on current filter and search
-      let filteredItems = libraryData.filter(item => {
-        const matchesFilter = filter === 'all' || item.category === filter;
-        const matchesSearch = search === '' || 
-          item.title.toLowerCase().includes(search.toLowerCase()) ||
-          item.description.toLowerCase().includes(search.toLowerCase()) ||
-          item.tags.some(tag => tag.toLowerCase().includes(search.toLowerCase()));
+      try {
+        const params = {
+          limit: 100
+        };
+        if (filter !== 'all') params.category = filter;
+        if (debouncedSearch) params.search = debouncedSearch;
         
-        return matchesFilter && matchesSearch;
-      });
-      
-      setItems(filteredItems);
-      setLoading(false);
+        const response = await libraryAPI.getAll(params);
+        if (response.data.success) {
+          setItems(response.data.data || []);
+        }
+      } catch (error) {
+        console.error('Error loading library items:', error);
+        setItems([]);
+      } finally {
+        setLoading(false);
+      }
     };
     
-    // Debounce the filtering
-    const timer = setTimeout(loadItems, 300);
-    return () => clearTimeout(timer);
+    loadItems();
   }, [filter, debouncedSearch]);
 
   const filters = [

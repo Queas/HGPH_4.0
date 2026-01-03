@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Library from './components/Library';
-import Articles from './components/Articles';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import Modal from './components/Modal';
 import Login from './components/Login';
 import Register from './components/Register';
-import AdminDashboard from './components/AdminDashboard';
-import Professional from './components/Professional';
 import Toast from './components/Toast';
 import Loader from './components/Loader';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import LibraryPage from './pages/LibraryPage';
+import ArticlesPage from './pages/ArticlesPage';
+import ContactPage from './pages/ContactPage';
+import AdminPage from './pages/AdminPage';
+import ProfessionalPage from './pages/ProfessionalPage';
 import { AuthProvider } from './contexts/AuthContext';
 import './styles/App.css';
 
@@ -97,22 +96,15 @@ function App() {
   return (
     <AuthProvider>
       <div className="app">
-        <Navbar onAuthClick={openAuthModal} onNavigate={navigateToPage} />
+        <Navbar onAuthClick={openAuthModal} currentPage={currentPage} onNavigate={navigateToPage} />
         
-        {currentPage === 'home' && (
-          <>
-            <Hero />
-            <About />
-            <Library onItemClick={openModal} />
-            <Articles onItemClick={openModal} />
-            <Contact showToast={showToast} />
-            <Footer />
-          </>
-        )}
-        
-        {currentPage === 'admin' && <AdminDashboard />}
-        
-        {currentPage === 'professional' && <Professional />}
+        {currentPage === 'home' && <HomePage />}
+        {currentPage === 'about' && <AboutPage />}
+        {currentPage === 'library' && <LibraryPage onItemClick={openModal} />}
+        {currentPage === 'articles' && <ArticlesPage onItemClick={openModal} />}
+        {currentPage === 'contact' && <ContactPage showToast={showToast} />}
+        {currentPage === 'admin' && <AdminPage />}
+        {currentPage === 'professional' && <ProfessionalPage />}
         
         {modalData && (
           <Modal item={modalData} onClose={closeModal} />

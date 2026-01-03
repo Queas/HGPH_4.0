@@ -113,16 +113,21 @@ router.post('/login', async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({
         success: false,
-        message: 'Please provide email and password'
+        message: 'Please provide email/username and password'
       });
     }
 
-    // Find user
-    const user = await db.users.findOne({ email });
+    // Find user by email or username
+    const user = await db.users.findOne({ 
+      $or: [
+        { email: email.toLowerCase() }, 
+        { username: email }
+      ] 
+    });
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid email or password'
+        message: 'Invalid email/username or password'
       });
     }
 
@@ -131,7 +136,7 @@ router.post('/login', async (req, res) => {
     if (!isValidPassword) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid email or password'
+        message: 'Invalid email/username or password'
       });
     }
 
@@ -187,6 +192,40 @@ router.get('/profile', verifyToken, async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to get profile',
+      error: error.message
+    });
+  }
+});
+
+// @route   GET /api/auth/users
+// @desc    Get all users (admin only)
+// @access  Private
+router.get('/users', verifyToken, async (req, res) => {
+  try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Access denied. Admin only.'
+      });
+    }
+
+    const users = await db.users.find({});
+    
+    // Remove passwords from response
+    const usersWithoutPasswords = users.map(user => {
+      const { password, ...userWithoutPassword } = user;
+      return userWithoutPassword;
+    });
+
+    res.json({
+      success: true,
+      data: usersWithoutPasswords
+    });
+  } catch (error) {
+    console.error('Get users error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to get users',
       error: error.message
     });
   }

@@ -40,7 +40,7 @@ router.post('/register', [
       });
     }
 
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({
@@ -54,8 +54,12 @@ router.post('/register', [
       });
     }
 
+    // Validate role (prevent users from registering as admin via API)
+    const allowedRoles = ['user', 'professional'];
+    const userRole = role && allowedRoles.includes(role) ? role : 'user';
+
     // Create new user
-    const user = new User({ username, email, password });
+    const user = new User({ username, email, password, role: userRole });
     await user.save();
 
     // Generate token
@@ -85,7 +89,7 @@ router.post('/register', [
 
 // Login route
 router.post('/login', [
-  body('email').isEmail().normalizeEmail().withMessage('Please provide a valid email'),
+  body('email').notEmpty().withMessage('Email or username is required'),
   body('password').notEmpty().withMessage('Password is required')
 ], async (req, res) => {
   try {
@@ -100,12 +104,14 @@ router.post('/login', [
 
     const { email, password } = req.body;
 
-    // Find user by email
-    const user = await User.findOne({ email });
+    // Find user by email or username
+    const user = await User.findOne({
+      $or: [{ email: email.toLowerCase() }, { username: email }]
+    });
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid email or password'
+        message: 'Invalid email/username or password'
       });
     }
 
@@ -114,7 +120,7 @@ router.post('/login', [
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid email or password'
+        message: 'Invalid email/username or password'
       });
     }
 
