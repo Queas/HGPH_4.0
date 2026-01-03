@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HalamangGaling PH - Philippine Herbal Medicine</title>
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="leaf-spinner"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon">🌿</span>
+        <span class="logo-text">HalamangGaling<span class="logo-accent">PH</span></span>
+      </a>
+      
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#library" class="nav-link" data-section="library">Library</a></li>
+        <li><a href="#articles" class="nav-link" data-section="articles">Articles</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline" id="loginBtn">Login</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">🇵🇭 Proudly Filipino</div>
+      <h1 class="hero-title">
+        Science-Based<br>
+        <span class="text-gradient">Philippine Herbal</span><br>
+        Knowledge
+      </h1>
+      <p class="hero-subtitle">
+        Preserving centuries of traditional medicine through modern digital learning. 
+        Discover the healing power of Philippine flora and fauna.
+      </p>
+      <div class="hero-actions">
+        <a href="#library" class="btn btn-primary btn-lg">Explore Library</a>
+        <a href="#about" class="btn btn-ghost btn-lg">Learn More</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number" data-count="50">0</span>+
+          <span class="stat-label">Medicinal Plants</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-count="20">0</span>+
+          <span class="stat-label">Marine Species</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-count="15">0</span>+
+          <span class="stat-label">Healing Practices</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">About Us</span>
+        <h2 class="section-title">Bridging Tradition & Technology</h2>
+        <p class="section-subtitle">We're on a mission to preserve and share the rich heritage of Philippine traditional medicine</p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-card" data-aos="fade-up">
+          <div class="about-icon">🎯</div>
+          <h3>Our Mission</h3>
+          <p>To educate and preserve the knowledge of Philippine medicinal plants through accessible digital platforms, ensuring this wisdom reaches future generations.</p>
+        </div>
+        <div class="about-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="about-icon">👁️</div>
+          <h3>Our Vision</h3>
+          <p>A world where traditional medicine is respected, researched, and integrated alongside modern healthcare for holistic wellness.</p>
+        </div>
+        <div class="about-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="about-icon">🤝</div>
+          <h3>Our Commitment</h3>
+          <p>Working with researchers, healers, and communities to document, validate, and share authentic traditional healing knowledge.</p>
+        </div>
+      </div>
+
+      <div class="collaborators-section">
+        <h3 class="collab-title">Trusted By Leading Institutions</h3>
+        <div class="collab-slider" id="collabSlider">
+          <div class="collab-track">
+            <div class="collab-item">University of the Philippines</div>
+            <div class="collab-item">Department of Health</div>
+            <div class="collab-item">DOST-PCHRD</div>
+            <div class="collab-item">National Museum PH</div>
+            <div class="collab-item">UPLB College of Forestry</div>
+            <div class="collab-item">Philippine Institute of Traditional Medicine</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Library Section -->
+  <section id="library" class="section library">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Library</span>
+        <h2 class="section-title">Explore Our Collection</h2>
+        <p class="section-subtitle">Discover the healing treasures of the Philippine archipelago</p>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="library-controls">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search plants, animals, practices..." />
+        </div>
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All</button>
+          <button class="filter-tab" data-filter="plants">Plants</button>
+          <button class="filter-tab" data-filter="marine">Marine</button>
+          <button class="filter-tab" data-filter="practices">Practices</button>
+          <button class="filter-tab" data-filter="healers">Healers</button>
+        </div>
+      </div>
+
+      <!-- Library Grid -->
+      <div class="library-grid" id="libraryGrid">
+        <!-- Cards will be injected by JS -->
+      </div>
+
+      <div class="library-empty" id="libraryEmpty" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h3>No results found</h3>
+        <p>Try adjusting your search or filter criteria</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section id="articles" class="section articles">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Articles</span>
+        <h2 class="section-title">Latest Research & Insights</h2>
+        <p class="section-subtitle">Stay updated with the latest in Philippine herbal medicine research</p>
+      </div>
+
+      <div class="articles-grid" id="articlesGrid">
+        <!-- Articles will be injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <span class="section-badge">Get In Touch</span>
+          <h2 class="section-title">Have Questions?</h2>
+          <p>We'd love to hear from you. Whether you're a researcher, healer, or simply curious about traditional medicine, reach out to us.</p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <strong>Location</strong>
+                <p>Metro Manila, Philippines</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <div>
+                <strong>Email</strong>
+                <p>hello@halamanggaling.ph</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📱</span>
+              <div>
+                <strong>Phone</strong>
+                <p>+63 912 345 6789</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Juan Dela Cruz" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="juan@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a topic</option>
+              <option value="research">Research Collaboration</option>
+              <option value="feedback">Feedback</option>
+              <option value="contribution">Content Contribution</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Your message here..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">
+            <span class="logo-icon">🌿</span>
+            <span class="logo-text">HalamangGaling<span class="logo-accent">PH</span></span>
+          </a>
+          <p>Preserving Philippine traditional medicine through digital innovation.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">📘</a>
+            <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+            <a href="#" class="social-link" aria-label="Instagram">📷</a>
+            <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#library">Library</a></li>
+            <li><a href="#articles">Articles</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="#" data-filter="plants">Medicinal Plants</a></li>
+            <li><a href="#" data-filter="marine">Marine Animals</a></li>
+            <li><a href="#" data-filter="practices">Healing Practices</a></li>
+            <li><a href="#" data-filter="healers">Traditional Healers</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 HalamangGaling PH. All rights reserved.</p>
+        <p>Made with 💚 in the Philippines</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Modal content injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
