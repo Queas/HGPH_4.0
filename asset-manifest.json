@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hgph_4.0/static/css/main.711e7347.css",
+    "main.js": "/hgph_4.0/static/js/main.ded12ccd.js",
+    "static/media/up-logo.png": "/hgph_4.0/static/media/up-logo.34b7d4f0a303262f5e30.png",
+    "static/media/logo.png": "/hgph_4.0/static/media/logo.3965ce9011769e036df6.png",
+    "index.html": "/hgph_4.0/index.html",
+    "main.711e7347.css.map": "/hgph_4.0/static/css/main.711e7347.css.map",
+    "main.ded12ccd.js.map": "/hgph_4.0/static/js/main.ded12ccd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.711e7347.css",
+    "static/js/main.ded12ccd.js"
+  ]
+}
