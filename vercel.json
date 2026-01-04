@@ -1,4 +1,7 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "frontend/build"
+  "outputDirectory": "frontend/build",
+  "env": {
+    "CI": "false"
+  }
 }
