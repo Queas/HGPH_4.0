@@ -2,6 +2,7 @@
   "name": "hgph-monorepo",
   "version": "1.0.0",
   "scripts": {
+    "postinstall": "cd frontend && npm install",
     "build": "cd frontend && npm run build"
   }
 }
