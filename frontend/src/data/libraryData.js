@@ -1,0 +1,350 @@
+// HalamangGaling PH - Library Data
+// Migrated from HGPh_2.0 repository
+
+const libraryData = [
+  // MEDICINAL PLANTS
+  {
+    id: 1,
+    category: 'plants',
+    title: 'Lagundi',
+    scientific: 'Vitex negundo',
+    icon: '🌿',
+    description: 'One of the DOH-approved herbal medicines. Primarily used for coughs, colds, fever, and asthma. The leaves contain compounds with anti-inflammatory and bronchodilator properties.',
+    fullDescription: 'Lagundi is a shrub that grows throughout the Philippines. It has been scientifically proven to be effective in treating respiratory conditions. The Department of Health has approved Lagundi as an herbal medicine for cough and asthma relief.',
+    uses: ['Cough relief', 'Asthma treatment', 'Fever reduction', 'Cold symptoms'],
+    tags: ['DOH Approved', 'Respiratory', 'Anti-inflammatory'],
+    region: 'Nationwide'
+  },
+  {
+    id: 2,
+    category: 'plants',
+    title: 'Sambong',
+    scientific: 'Blumea balsamifera',
+    icon: '🍃',
+    description: 'A natural diuretic used primarily for kidney stones and urinary problems. Also known for its anti-urolithiatic properties that help dissolve kidney stones.',
+    fullDescription: 'Sambong is a medicinal plant endemic to the Philippines. Clinical studies have shown its effectiveness in treating kidney problems and as a natural diuretic. It is one of the ten herbal medicines endorsed by the DOH.',
+    uses: ['Kidney stones', 'Diuretic', 'Urinary tract infection', 'Hypertension'],
+    tags: ['DOH Approved', 'Urinary', 'Diuretic'],
+    region: 'Nationwide'
+  },
+  {
+    id: 3,
+    category: 'plants',
+    title: 'Yerba Buena',
+    scientific: 'Clinopodium douglasii',
+    icon: '🌱',
+    description: 'A popular analgesic herb used for pain relief including headaches, toothaches, and muscle pain. Contains menthol which provides cooling and numbing effects.',
+    fullDescription: 'Yerba Buena, also known as Peppermint, is widely used in the Philippines as a natural pain reliever. The leaves can be made into tea or applied as a poultice for topical relief.',
+    uses: ['Headache relief', 'Toothache', 'Muscle pain', 'Arthritis'],
+    tags: ['DOH Approved', 'Analgesic', 'Pain Relief'],
+    region: 'Nationwide'
+  },
+  {
+    id: 4,
+    category: 'plants',
+    title: 'Tsaang Gubat',
+    scientific: 'Carmona retusa',
+    icon: '🍵',
+    description: 'Used for stomach problems including diarrhea and stomach aches. Also effective as a mouth wash for dental hygiene and treating mouth sores.',
+    fullDescription: 'Tsaang Gubat or Wild Tea is a small tree native to the Philippines. Its leaves are brewed as tea to treat various digestive problems. It has antibacterial properties that make it effective for oral health.',
+    uses: ['Diarrhea', 'Stomach ache', 'Mouth wash', 'Dysentery'],
+    tags: ['DOH Approved', 'Digestive', 'Antibacterial'],
+    region: 'Nationwide'
+  },
+  {
+    id: 5,
+    category: 'plants',
+    title: 'Niyog-niyogan',
+    scientific: 'Quisqualis indica',
+    icon: '🌺',
+    description: 'An effective anti-helminthic used to expel intestinal worms, particularly roundworms and pinworms. Seeds are consumed for deworming.',
+    fullDescription: 'Niyog-niyogan is a vine known for its beautiful flowers and medicinal properties. The dried seeds are traditionally used as a deworming treatment, especially for children.',
+    uses: ['Roundworms', 'Pinworms', 'Intestinal parasites', 'Deworming'],
+    tags: ['DOH Approved', 'Anti-parasitic', 'Deworming'],
+    region: 'Nationwide'
+  },
+  {
+    id: 6,
+    category: 'plants',
+    title: 'Bayabas',
+    scientific: 'Psidium guajava',
+    icon: '🍐',
+    description: 'Used as an antiseptic for washing wounds and treating skin infections. The leaves have antimicrobial properties effective against various bacteria.',
+    fullDescription: 'Guava leaves have been used in traditional Filipino medicine for centuries. Rich in antioxidants and antimicrobial compounds, they are effective for wound care and skin conditions.',
+    uses: ['Wound cleaning', 'Skin infections', 'Antiseptic wash', 'Toothache'],
+    tags: ['DOH Approved', 'Antiseptic', 'Antimicrobial'],
+    region: 'Nationwide'
+  },
+  {
+    id: 7,
+    category: 'plants',
+    title: 'Akapulko',
+    scientific: 'Senna alata',
+    icon: '🌻',
+    description: 'Effective treatment for skin diseases including ringworm, eczema, scabies, and other fungal infections. Applied topically as a poultice.',
+    fullDescription: 'Akapulko is known as the \"ringworm bush\" due to its effectiveness against fungal skin infections. The leaves are crushed and applied directly to affected areas.',
+    uses: ['Ringworm', 'Eczema', 'Scabies', 'Fungal infections'],
+    tags: ['DOH Approved', 'Antifungal', 'Skin'],
+    region: 'Nationwide'
+  },
+  {
+    id: 8,
+    category: 'plants',
+    title: 'Ulasimang Bato',
+    scientific: 'Peperomia pellucida',
+    icon: '🥬',
+    description: 'Used to lower uric acid levels and treat gout and arthritis. Also known for its anti-inflammatory and analgesic properties.',
+    fullDescription: 'Ulasimang Bato or Pansit-pansitan is a small herb that grows in shaded, moist areas. Research has shown its effectiveness in managing gout and rheumatism.',
+    uses: ['Gout', 'Arthritis', 'Uric acid', 'Rheumatism'],
+    tags: ['DOH Approved', 'Anti-inflammatory', 'Gout'],
+    region: 'Nationwide'
+  },
+  {
+    id: 9,
+    category: 'plants',
+    title: 'Bawang',
+    scientific: 'Allium sativum',
+    icon: '🧄',
+    description: 'Helps reduce cholesterol levels and lower blood pressure. Known for its cardiovascular benefits and antimicrobial properties.',
+    fullDescription: 'Garlic has been used medicinally for thousands of years. Modern research confirms its benefits for heart health, including lowering blood pressure and cholesterol levels.',
+    uses: ['High cholesterol', 'Hypertension', 'Heart health', 'Antimicrobial'],
+    tags: ['DOH Approved', 'Cardiovascular', 'Heart Health'],
+    region: 'Nationwide'
+  },
+  {
+    id: 10,
+    category: 'plants',
+    title: 'Ampalaya',
+    scientific: 'Momordica charantia',
+    icon: '🥒',
+    description: 'Used for managing diabetes by helping to lower blood sugar levels. Contains compounds that mimic insulin and improve glucose tolerance.',
+    fullDescription: 'Bitter melon is a staple in Filipino cuisine and medicine. Clinical studies have demonstrated its effectiveness in managing Type 2 diabetes by improving insulin sensitivity.',
+    uses: ['Diabetes management', 'Blood sugar control', 'Insulin sensitivity', 'Metabolism'],
+    tags: ['DOH Approved', 'Diabetes', 'Blood Sugar'],
+    region: 'Nationwide'
+  },
+
+  // MARINE ANIMALS
+  {
+    id: 11,
+    category: 'marine',
+    title: 'Sea Cucumber',
+    scientific: 'Holothuroidea',
+    icon: '🥒',
+    description: 'Known locally as \"balat,\" used for wound healing and believed to have potent anti-inflammatory and regenerative properties.',
+    fullDescription: 'Sea cucumbers have been used in traditional medicine throughout Asia. They contain compounds that promote tissue regeneration and wound healing.',
+    uses: ['Wound healing', 'Joint pain', 'Anti-inflammatory', 'Tissue repair'],
+    tags: ['Traditional', 'Wound Healing', 'Marine'],
+    region: 'Visayas, Mindanao'
+  },
+  {
+    id: 12,
+    category: 'marine',
+    title: 'Sea Horse',
+    scientific: 'Hippocampus',
+    icon: '🐴',
+    description: 'Traditionally used in various remedies, believed to increase vitality and treat respiratory issues and kidney problems.',
+    fullDescription: 'Seahorses have been used in traditional Chinese and Filipino medicine for centuries. They are believed to possess properties that enhance vitality and treat various ailments.',
+    uses: ['Vitality', 'Respiratory issues', 'Kidney problems', 'Traditional remedies'],
+    tags: ['Traditional', 'Vitality', 'Marine'],
+    region: 'Coastal Areas'
+  },
+  {
+    id: 13,
+    category: 'marine',
+    title: 'Sea Urchin',
+    scientific: 'Echinoidea',
+    icon: '🦔',
+    description: 'Roe is consumed for nutritional benefits and believed to boost the immune system. Rich in omega-3 fatty acids and antioxidants.',
+    fullDescription: 'Sea urchin roe, known as uni, is prized for both its flavor and nutritional value. It is rich in protein, vitamins, and minerals that support overall health.',
+    uses: ['Nutrition', 'Immune boost', 'Omega-3 source', 'Antioxidants'],
+    tags: ['Nutritional', 'Immune System', 'Marine'],
+    region: 'Coastal Areas'
+  },
+  {
+    id: 14,
+    category: 'marine',
+    title: 'Oyster',
+    scientific: 'Ostreidae',
+    icon: '🦪',
+    description: 'Rich in zinc and minerals, traditionally used to improve vitality and immune function. Known as a natural aphrodisiac.',
+    fullDescription: 'Oysters are one of the most nutrient-dense foods available. They are exceptionally high in zinc, which supports immune function and overall health.',
+    uses: ['Zinc source', 'Immune function', 'Vitality', 'Mineral nutrition'],
+    tags: ['Nutritional', 'Minerals', 'Marine'],
+    region: 'Coastal Areas'
+  },
+  {
+    id: 15,
+    category: 'marine',
+    title: 'Abalone',
+    scientific: 'Haliotis',
+    icon: '🐚',
+    description: 'Shell powder used in traditional remedies for eye health and calming purposes. The meat is prized for its nutritional value.',
+    fullDescription: 'Abalone has been used in traditional medicine, particularly for eye health and as a calming agent. The shell is ground into powder for medicinal use.',
+    uses: ['Eye health', 'Calming', 'Liver health', 'Detoxification'],
+    tags: ['Traditional', 'Eye Health', 'Marine'],
+    region: 'Coastal Areas'
+  },
+  {
+    id: 16,
+    category: 'marine',
+    title: 'Jellyfish',
+    scientific: 'Medusozoa',
+    icon: '🎐',
+    description: 'Some species used in traditional medicine for treating arthritis and high blood pressure. Low in calories, high in collagen.',
+    fullDescription: 'Certain jellyfish species have been consumed for their potential health benefits, including joint health support and collagen content.',
+    uses: ['Arthritis', 'Blood pressure', 'Collagen', 'Joint health'],
+    tags: ['Traditional', 'Arthritis', 'Marine'],
+    region: 'Coastal Areas'
+  },
+
+  // HEALING PRACTICES
+  {
+    id: 17,
+    category: 'practices',
+    title: 'Hilot',
+    scientific: 'Traditional Massage',
+    icon: '🙌',
+    description: 'Traditional Filipino massage technique used for healing muscle pain, improving circulation, treating sprains, and promoting relaxation.',
+    fullDescription: 'Hilot is an ancient Filipino healing art that combines massage, bone-setting, and energy healing. Practitioners use coconut oil and apply specific pressure techniques passed down through generations.',
+    uses: ['Muscle pain', 'Sprains', 'Circulation', 'Relaxation'],
+    tags: ['Physical Therapy', 'Traditional', 'Massage'],
+    region: 'Nationwide'
+  },
+  {
+    id: 18,
+    category: 'practices',
+    title: 'Tawas',
+    scientific: 'Divination Ritual',
+    icon: '🔮',
+    description: 'A diagnostic ritual using alum crystals melted and dropped in water to determine the cause of illness, often revealing supernatural causes.',
+    fullDescription: 'Tawas is a traditional diagnostic method where alum (potassium aluminum sulfate) is melted over a candle and dropped into water. The resulting shapes are interpreted to identify the source of illness.',
+    uses: ['Diagnosis', 'Spiritual cleansing', 'Identifying illness', 'Traditional divination'],
+    tags: ['Diagnostic', 'Spiritual', 'Ritual'],
+    region: 'Nationwide'
+  },
+  {
+    id: 19,
+    category: 'practices',
+    title: 'Bentusa',
+    scientific: 'Cupping Therapy',
+    icon: '🫙',
+    description: 'Traditional cupping method using heated glasses placed on the skin to improve blood flow and remove \"bad air\" or toxins from the body.',
+    fullDescription: 'Bentusa is the Filipino version of cupping therapy. Glass cups are heated and placed on the skin, creating suction that is believed to draw out toxins and improve circulation.',
+    uses: ['Blood circulation', 'Detoxification', 'Pain relief', 'Muscle tension'],
+    tags: ['Physical Therapy', 'Detox', 'Traditional'],
+    region: 'Nationwide'
+  },
+  {
+    id: 20,
+    category: 'practices',
+    title: 'Suob',
+    scientific: 'Steam Therapy',
+    icon: '♨️',
+    description: 'Herbal steam inhalation therapy used for respiratory ailments, colds, and to cleanse the body through sweating.',
+    fullDescription: 'Suob involves boiling medicinal plants and inhaling the steam, sometimes while covered with a blanket. This practice is used to treat respiratory conditions and for post-partum recovery.',
+    uses: ['Respiratory relief', 'Cold treatment', 'Post-partum care', 'Body cleansing'],
+    tags: ['Respiratory', 'Steam Therapy', 'Traditional'],
+    region: 'Nationwide'
+  },
+  {
+    id: 21,
+    category: 'practices',
+    title: 'Pahid',
+    scientific: 'Topical Application',
+    icon: '🧴',
+    description: 'Application of herbal preparations directly on the skin for treating skin conditions, wounds, and localized pain.',
+    fullDescription: 'Pahid involves applying crushed herbs, oils, or specially prepared ointments directly to the affected area. This method is used for various skin conditions and localized treatments.',
+    uses: ['Skin conditions', 'Wound care', 'Pain relief', 'Inflammation'],
+    tags: ['Topical', 'Skin Care', 'Traditional'],
+    region: 'Nationwide'
+  },
+  {
+    id: 22,
+    category: 'practices',
+    title: 'Orasyon',
+    scientific: 'Prayer Healing',
+    icon: '🙏',
+    description: 'Healing through prayers and incantations, often combined with herbal treatments. Practitioners invoke spiritual aid for healing.',
+    fullDescription: 'Orasyon is a spiritual healing practice that combines Catholic prayers with indigenous beliefs. Healers recite specific prayers believed to have healing powers.',
+    uses: ['Spiritual healing', 'Protection', 'Blessing', 'Combined therapy'],
+    tags: ['Spiritual', 'Faith Healing', 'Prayer'],
+    region: 'Nationwide'
+  },
+
+  // TRADITIONAL HEALERS
+  {
+    id: 23,
+    category: 'healers',
+    title: 'Albularyo',
+    scientific: 'Folk Healer',
+    icon: '👨‍⚕️',
+    description: 'The most common type of traditional healer in the Philippines, using a combination of medicinal plants, prayers, and rituals.',
+    fullDescription: 'Albularyos are the backbone of traditional Filipino medicine. They combine knowledge of herbal remedies with spiritual practices to diagnose and treat various ailments. Their knowledge is typically passed down through generations.',
+    uses: ['General healing', 'Herbal medicine', 'Spiritual cleansing', 'Diagnosis'],
+    tags: ['Folk Healer', 'Herbalist', 'Spiritual'],
+    region: 'Nationwide'
+  },
+  {
+    id: 24,
+    category: 'healers',
+    title: 'Manghihilot',
+    scientific: 'Massage Therapist',
+    icon: '💆',
+    description: 'Specialists in traditional massage therapy (hilot). They treat muscle pains, sprains, and assist with childbirth and bone setting.',
+    fullDescription: 'Manghihilots are skilled practitioners of hilot, the traditional Filipino massage. They have extensive knowledge of the body and can treat various physical ailments through manipulation and massage.',
+    uses: ['Massage therapy', 'Bone setting', 'Midwifery', 'Physical therapy'],
+    tags: ['Massage', 'Physical Healer', 'Midwife'],
+    region: 'Nationwide'
+  },
+  {
+    id: 25,
+    category: 'healers',
+    title: 'Herbolario',
+    scientific: 'Herbalist',
+    icon: '🌿',
+    description: 'Experts in medicinal plants and herbal preparations. They create remedies from local flora with extensive knowledge of plant properties.',
+    fullDescription: 'Herbolarios specialize in plant-based medicine. They know which plants to use, how to prepare them, and the correct dosages for various conditions. Their knowledge is often encyclopedic.',
+    uses: ['Herbal remedies', 'Plant medicine', 'Natural treatments', 'Remedy preparation'],
+    tags: ['Herbalist', 'Plant Medicine', 'Natural'],
+    region: 'Nationwide'
+  },
+  {
+    id: 26,
+    category: 'healers',
+    title: 'Babaylan',
+    scientific: 'Spiritual Healer',
+    icon: '🔮',
+    description: 'Pre-colonial spiritual leaders and healers, primarily women. They serve as intermediaries between the physical and spiritual worlds.',
+    fullDescription: 'Babaylans were the spiritual leaders in pre-colonial Philippines. They performed rituals, healed the sick, and communicated with spirits. Though suppressed during colonization, their traditions persist in some communities.',
+    uses: ['Spiritual healing', 'Rituals', 'Spirit communication', 'Community guidance'],
+    tags: ['Spiritual', 'Ritual', 'Female Healer'],
+    region: 'Visayas'
+  },
+  {
+    id: 27,
+    category: 'healers',
+    title: 'Mumbaki',
+    scientific: 'Ritual Priest',
+    icon: '🪶',
+    description: 'Traditional priests of the Ifugao people who perform rituals and healing ceremonies with knowledge of customary laws.',
+    fullDescription: 'Mumbakis are the ritual specialists of the Ifugao people in the Cordillera region. They perform elaborate ceremonies for healing, harvest, and other important occasions. They are keepers of oral traditions and customary laws.',
+    uses: ['Healing ceremonies', 'Rituals', 'Traditional law', 'Community leadership'],
+    tags: ['Ritual Healer', 'Indigenous', 'Ifugao'],
+    region: 'Cordillera'
+  },
+  {
+    id: 28,
+    category: 'healers',
+    title: 'Mananambal',
+    scientific: 'Visayan Healer',
+    icon: '⚕️',
+    description: 'Cebuano term for traditional healers who use herbs, prayers, and sometimes supernatural beliefs to treat patients.',
+    fullDescription: 'Mananambal is the Visayan term for traditional healers. They combine herbal knowledge with spiritual practices unique to the Visayan region. Some specialize in specific conditions or healing methods.',
+    uses: ['Herbal healing', 'Spiritual practices', 'Traditional medicine', 'Local remedies'],
+    tags: ['Visayan', 'Traditional', 'Healer'],
+    region: 'Visayas'
+  }
+];
+
+export default libraryData;

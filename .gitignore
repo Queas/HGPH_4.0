@@ -122,7 +122,8 @@ Desktop.ini
 # Database files (local development)
 backend/data/*.db
 backend/data/
-data/
+# data/ - commented out to allow frontend/src/data to be tracked
+# data/
 
 # Backup files
 *.backup
