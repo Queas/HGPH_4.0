@@ -12,4 +12,8 @@ services:
         value: production
       - key: PORT
         value: 10000
+      - key: MONGO_URL
+        sync: false  # Set this manually in Render Dashboard for security
+      - key: JWT_SECRET
+        generateValue: true  # Render will auto-generate a secure value
     healthCheckPath: /api/health
