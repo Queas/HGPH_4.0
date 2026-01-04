@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8002';
+// In production, frontend and backend are served from same domain
+// In development, backend runs on localhost:8002
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 
+  (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8002');
 
 const api = axios.create({
   baseURL: `${API_BASE_URL}/api`,

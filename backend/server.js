@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const db = require('./config/local-db');
 const libraryRoutes = require('./routes/library-local');
 const articleRoutes = require('./routes/articles-local');
@@ -40,13 +41,24 @@ app.use(cors({
   app.use('/api/contact', contactRoutes);
   app.use('/api/auth', authLocalRoutes);
 
-  // 404 handler
+  // 404 handler for API routes
   app.use('/api/*', (req, res) => {
     res.status(404).json({
       success: false,
       message: 'API endpoint not found'
     });
   });
+
+  // Serve frontend static files in production
+  if (process.env.NODE_ENV === 'production') {
+    const frontendPath = path.join(__dirname, '../frontend/build');
+    app.use(express.static(frontendPath));
+    
+    // Handle React Router - send all non-API requests to index.html
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(frontendPath, 'index.html'));
+    });
+  }
 
   // Error handler
   app.use((err, req, res, next) => {
