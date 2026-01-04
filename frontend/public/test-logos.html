@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Test - HalamangGaling PH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d5a3d 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #ffffff;
+        }
+
+        .test-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .test-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #a8e6cf;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .image-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            margin-bottom: 1rem;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: contain;
+        }
+
+        .status {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .status.success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4caf50;
+            color: #a8e6cf;
+        }
+
+        .status.error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid #f44336;
+            color: #ffcdd2;
+        }
+
+        .info {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #a8e6cf;
+            padding: 1rem;
+            margin-top: 2rem;
+            border-radius: 5px;
+        }
+
+        .info p {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        .file-path {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            word-break: break-all;
+        }
+
+        .partnership-section {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .partnership-section .partner-logo {
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        .instructions {
+            background: linear-gradient(135deg, rgba(168, 230, 207, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            border: 2px solid rgba(168, 230, 207, 0.3);
+        }
+
+        .instructions h3 {
+            color: #a8e6cf;
+            margin-bottom: 1rem;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+        }
+
+        .instructions li {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌿 Logo Test Page - HalamangGaling PH</h1>
+
+        <!-- Main Logo Test -->
+        <div class="test-section">
+            <h2>🖼️ Main Logo (Navbar & Footer)</h2>
+            <div class="image-container">
+                <img 
+                    id="mainLogo" 
+                    src="/hgph_4.0/assets/logo.png" 
+                    alt="HalamangGaling PH Logo"
+                    onload="document.getElementById('mainStatus').classList.add('success'); document.getElementById('mainStatus').textContent = '✅ Main logo loaded successfully!'"
+                    onerror="document.getElementById('mainStatus').classList.add('error'); document.getElementById('mainStatus').textContent = '❌ Failed to load main logo. Check file path and existence.'"
+                >
+            </div>
+            <div id="mainStatus" class="status">⏳ Loading main logo...</div>
+            <div class="file-path">
+                Expected path: /hgph_4.0/assets/logo.png<br>
+                Full path: frontend/public/assets/logo.png
+            </div>
+        </div>
+
+        <!-- UP Partnership Logo Test -->
+        <div class="test-section">
+            <h2>🤝 Partnership Logo (Footer)</h2>
+            <div class="partnership-section">
+                <p style="text-align: center; margin-bottom: 1rem; font-size: 0.9rem; letter-spacing: 0.1em; font-weight: 600;">IN PARTNERSHIP WITH:</p>
+                <div class="image-container">
+                    <img 
+                        id="partnerLogo" 
+                        src="/hgph_4.0/assets/up-logo.png" 
+                        alt="University of the Philippines Logo"
+                        class="partner-logo"
+                        onload="document.getElementById('partnerStatus').classList.add('success'); document.getElementById('partnerStatus').textContent = '✅ Partnership logo loaded successfully!'"
+                        onerror="document.getElementById('partnerStatus').classList.add('error'); document.getElementById('partnerStatus').textContent = '❌ Failed to load partnership logo. Check file path and existence.'"
+                    >
+                </div>
+            </div>
+            <div id="partnerStatus" class="status">⏳ Loading partnership logo...</div>
+            <div class="file-path">
+                Expected path: /hgph_4.0/assets/up-logo.png<br>
+                Full path: frontend/public/assets/up-logo.png
+            </div>
+        </div>
+
+        <!-- Information Section -->
+        <div class="info">
+            <p><strong>📍 Current Test File Location:</strong></p>
+            <div class="file-path">frontend/public/test-logos.html</div>
+            <p style="margin-top: 1rem;"><strong>ℹ️ Note:</strong> This test page is served from the same public folder as your React app, so the image paths should work identically.</p>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>📋 How to Use This Test Page:</h3>
+            <ol>
+                <li><strong>Direct Access:</strong> Open this file by navigating to <code>http://localhost:3000/test-logos.html</code> in your browser (make sure frontend server is running)</li>
+                <li><strong>Check Status:</strong> Look at the status messages below each image - they will show ✅ or ❌</li>
+                <li><strong>Verify Images:</strong> If you see the actual logo images displayed in the white boxes above, everything is working!</li>
+                <li><strong>Troubleshooting:</strong> If images fail to load:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Verify files exist in <code>frontend/public/assets/</code></li>
+                        <li>Check filenames are exactly <code>logo.png</code> and <code>up-logo.png</code> (case-sensitive)</li>
+                        <li>Restart your development server</li>
+                        <li>Clear browser cache (Ctrl+Shift+R)</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Additional debugging information
+        console.log('Logo Test Page Loaded');
+        console.log('Main Logo Path:', document.getElementById('mainLogo').src);
+        console.log('Partner Logo Path:', document.getElementById('partnerLogo').src);
+        
+        // Test if images exist by checking their natural dimensions after load
+        setTimeout(() => {
+            const mainLogo = document.getElementById('mainLogo');
+            const partnerLogo = document.getElementById('partnerLogo');
+            
+            if (mainLogo.naturalWidth > 0) {
+                console.log('✅ Main logo dimensions:', mainLogo.naturalWidth + 'x' + mainLogo.naturalHeight);
+            } else {
+                console.error('❌ Main logo failed to load or has no dimensions');
+            }
+            
+            if (partnerLogo.naturalWidth > 0) {
+                console.log('✅ Partner logo dimensions:', partnerLogo.naturalWidth + 'x' + partnerLogo.naturalHeight);
+            } else {
+                console.error('❌ Partner logo failed to load or has no dimensions');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
