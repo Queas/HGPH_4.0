@@ -3,5 +3,15 @@
   "outputDirectory": "frontend/build",
   "env": {
     "CI": "false"
-  }
+  },
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
