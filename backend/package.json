@@ -7,7 +7,10 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "seed": "node seed.js",
-    "create-admin": "node create-admin.js"
+    "seed-tkdl": "node seed-tkdl.js",
+    "create-admin": "node create-admin.js",
+    "migrate-plants": "node migrate-to-medicinal-plants.js",
+    "migrate-plants:dry-run": "node migrate-to-medicinal-plants.js --dry-run"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

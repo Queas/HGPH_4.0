@@ -2,13 +2,30 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+
+// Import MongoDB connection
+const connectDB = require('./config/db');
+
+// Import local database for backward compatibility
 const db = require('./config/local-db');
+
+// Import TKDL MongoDB routes
+const { router: authRoutes } = require('./routes/auth');
+const medicinalPlantsRoutes = require('./routes/medicinal-plants');
+const clinicalStudiesRoutes = require('./routes/clinical-studies');
+const indigenousKnowledgeRoutes = require('./routes/indigenous-knowledge');
+const researchContributionsRoutes = require('./routes/research-contributions');
+
+// Import legacy local routes
 const libraryRoutes = require('./routes/library-local');
 const articleRoutes = require('./routes/articles-local');
 const contactRoutes = require('./routes/contact-local');
 const authLocalRoutes = require('./routes/auth-local');
 
 const app = express();
+
+// Connect to MongoDB
+connectDB();
 
 // Middleware
 app.use(cors({
@@ -29,17 +46,25 @@ app.use(cors({
   app.get('/api/health', (req, res) => {
     res.json({
       success: true,
-      message: 'HalamangGaling API is running',
-      database: 'Local file storage (NeDB)',
-      timestamp: new Date().toISOString()
+      message: 'HalamangGaling TKDL-PH API is running',
+      database: process.env.MONGO_URL ? 'MongoDB Atlas' : 'Local file storage (NeDB)',
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV
     });
   });
 
-  // API Routes
-  app.use('/api/library', libraryRoutes);
-  app.use('/api/articles', articleRoutes);
-  app.use('/api/contact', contactRoutes);
-  app.use('/api/auth', authLocalRoutes);
+  // TKDL MongoDB API Routes
+  app.use('/api/auth', authRoutes);
+  app.use('/api/medicinal-plants', medicinalPlantsRoutes);
+  app.use('/api/clinical-studies', clinicalStudiesRoutes);
+  app.use('/api/indigenous-knowledge', indigenousKnowledgeRoutes);
+  app.use('/api/research-contributions', researchContributionsRoutes);
+
+  // Legacy Local Routes (for backward compatibility)
+  app.use('/api/library-local', libraryRoutes);
+  app.use('/api/articles-local', articleRoutes);
+  app.use('/api/contact-local', contactRoutes);
+  app.use('/api/auth-local', authLocalRoutes);
 
   // 404 handler for API routes
   app.use('/api/*', (req, res) => {
@@ -73,11 +98,21 @@ app.use(cors({
 const PORT = process.env.PORT || 8002;
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n🌿 HalamangGaling API Server running on port ${PORT}`);
-  console.log(`📁 Database: Local file storage (NeDB)`);
-  console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
-  console.log(`📚 Library API: http://localhost:${PORT}/api/library`);
-  console.log(`📰 Articles API: http://localhost:${PORT}/api/articles`);
-  console.log(`✉️  Contact API: http://localhost:${PORT}/api/contact`);
-  console.log(`🔐 Auth API: http://localhost:${PORT}/api/auth\n`);
+  console.log(`\n🌿 ========================================`);
+  console.log(`   HalamangGaling TKDL-PH API Server`);
+  console.log(`========================================`);
+  console.log(`🚀 Server: http://localhost:${PORT}`);
+  console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🗄️  Database: ${process.env.MONGO_URL ? 'MongoDB Atlas' : 'Local NeDB'}`);
+  console.log(`\n📍 Endpoints:`);
+  console.log(`   Health: http://localhost:${PORT}/api/health`);
+  console.log(`   Auth: http://localhost:${PORT}/api/auth`);
+  console.log(`   🌿 Medicinal Plants: http://localhost:${PORT}/api/medicinal-plants`);
+  console.log(`   🔬 Clinical Studies: http://localhost:${PORT}/api/clinical-studies`);
+  console.log(`   🏛️  Indigenous Knowledge: http://localhost:${PORT}/api/indigenous-knowledge`);
+  console.log(`   📚 Research Contributions: http://localhost:${PORT}/api/research-contributions`);
+  console.log(`\n📦 Legacy Endpoints (Local NeDB):`);
+  console.log(`   Library: http://localhost:${PORT}/api/library-local`);
+  console.log(`   Articles: http://localhost:${PORT}/api/articles-local`);
+  console.log(`========================================\n`);
 });
